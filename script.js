@@ -90,6 +90,13 @@ function mostrarCena(id) {
     btn.onclick = () => mostrarCena(cena.proxima);
     opcoesDiv.appendChild(btn);
   }
+
+  localStorage.setItem("progressoCena", id);
 }
 
-mostrarCena("A_Posto");
+const cenaSalva = localStorage.getItem("progressoCena");
+if (cenaSalva && cenas[cenaSalva]) {
+  mostrarCena(cenaSalva);
+} else {
+  mostrarCena("A_Posto");
+}
